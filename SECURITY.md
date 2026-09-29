@@ -1,5 +1,9 @@
 # Security Policy
 
+> [!CAUTION]
+> **废弃在线仓库：UNuse 已停止维护。** 本安全策略仅作为历史安全边界保留；请勿预期公开 Issue、
+> 审核机器人或维护流程仍会得到处理。若存量内容存在可利用风险，请避免公开披露敏感细节。
+
 ## 报告问题
 
 请不要在公开 Issue 中披露可直接利用的恶意插件、凭据泄漏或供应链漏洞。请通过仓库的
@@ -9,7 +13,7 @@ GitHub Security Advisory 私密报告，并附上插件 ID、版本、Release UR
 
 ## 信任边界
 
-- 插件与 NyaLauncher 在同一进程运行，能力授权不是系统沙箱。
+- 插件与宿主客户端在同一进程运行，能力授权不是系统沙箱。
 - `listed` 只表示元数据、固定下载、哈希、ZIP 结构和包内清单通过自动验证。
 - `verified` 表示可信审核者审查了精确的 `pluginId + generation + version + SHA-256`，不是绝对安全保证。
 - 未审核版本仍可被收录，但启动器会显示警告并在下载前要求用户确认。
@@ -51,7 +55,7 @@ GitHub Security Advisory 私密报告，并附上插件 ID、版本、Release UR
 - 已归档但仍公开的 source 仓库保留 numeric identity，允许退役或转让；target 仍必须未归档。已经
   删除、disabled 或 private 的 source 无法建立可信 API/确认链，必须先由原 owner 恢复并公开。
 - 用户仓库确认必须来自 source `ownerId` 对应账号在同一 Issue 的更早精确评论；组织仓库必须在默认
-  分支提供字段完全相等的 `_nyalauncher_lifecycle.json`，并由组织侧分支保护管理员审批。
+  分支提供字段完全相等的历史生命周期确认文件，并由组织侧分支保护管理员审批。
 - 事务把管理员 numeric ID、时间、Issue/comment、原因、作者确认和 source/target 数字 ID 写入
   identity ledger；登录名仅用于显示，不能单独授权。
 - 所有版本撤回只会使商店发现层隐藏；完整 v2 历史继续向已安装用户提供撤回告警。文本 ID 和

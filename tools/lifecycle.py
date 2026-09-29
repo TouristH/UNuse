@@ -185,7 +185,7 @@ def github_get(event: dict, path: str) -> object:
         headers={
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {token}",
-            "User-Agent": "NyaLauncher-Lifecycle/1.0",
+            "User-Agent": "UNuse-Lifecycle/1.0",
             "X-GitHub-Api-Version": "2022-11-28",
         },
     )
@@ -277,7 +277,7 @@ def validate_confirmation_file(repository: dict, request: dict) -> str:
     )
     http_request = urllib.request.Request(
         url,
-        headers={"Accept": "application/json", "User-Agent": "NyaLauncher-Lifecycle/1.0"},
+        headers={"Accept": "application/json", "User-Agent": "UNuse-Lifecycle/1.0"},
     )
     try:
         with urllib.request.urlopen(http_request, timeout=30) as response:

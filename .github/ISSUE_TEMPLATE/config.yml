@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 插件开发规范
-    url: https://github.com/redstore-noob/NyaLauncher/blob/testplug/NyaLauncher.Plugin.Abstractions/README.md
-    about: 开发、打包和能力声明说明
+  - name: UNuse 已停止维护
+    url: https://github.com/TouristH/UNuse
+    about: 废弃在线仓库；不再接收新插件、审核或生命周期请求
+  - name: 历史贡献说明
+    url: https://github.com/TouristH/UNuse/blob/main/CONTRIBUTING.md
+    about: 仅供查阅原有打包、收录和安全边界
   - name: 私密安全报告
-    url: https://github.com/TouristH/NyaLauncher-Plugins/security/advisories/new
+    url: https://github.com/TouristH/UNuse/security/advisories/new
     about: 请勿公开披露可利用漏洞或恶意插件细节

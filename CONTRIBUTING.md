@@ -1,4 +1,8 @@
-# 向 NyaLauncher 插件中心发布插件
+# 向 UNuse 发布插件（历史文档）
+
+> [!CAUTION]
+> **废弃在线仓库：UNuse 已停止维护。** 本仓库不再接收新插件、版本、审核或生命周期请求。
+> 以下内容仅为保留既有格式、安全边界和运维流程的历史说明。
 
 插件中心采用“作者仓库发布、中心仓库索引”的方式。作者不把 DLL 或 ZIP 提交到这里，
 也不需要为每个版本修改中心仓库；中心仓库从作者仓库根目录的 `_manifest.json` 同步有界完整
@@ -6,14 +10,13 @@
 
 ## 1. 准备插件包
 
-请先阅读
-[NyaLauncher 第三方插件开发规范（API v1）](https://github.com/redstore-noob/NyaLauncher/blob/main/NyaLauncher.Plugin.Abstractions/README.md)。
+本项目不再提供或指向外部插件开发规范；以下 API v1 要求仅用于解释存量发行包的历史合同。
 
 发行 ZIP 必须满足：
 
 - ZIP 根目录直接包含 `plugin.json`，不能再套一层目录。
 - 包内包含 `entryAssembly` 指向的 DLL 和需要的私有依赖。
-- 不得打包 `NyaLauncher.Plugin.Abstractions.dll`。
+- 不得打包由宿主提供的 API 合同程序集。
 - `plugin.json` 必须明确填写稳定的小写反向域名 ID、严格 SemVer 版本、`apiVersion: "1.0"`
   和 `minimumLauncherVersion`。
 - SemVer 的 major/minor/patch 与纯数字预发布标识不能超过 `2147483647`，以匹配启动器解析范围。
@@ -49,14 +52,14 @@ sha256sum plugin.zip
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/publisher-manifest-v1.schema.json",
+  "$schema": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/publisher-manifest-v1.schema.json",
   "manifest_version": 1,
   "id": "io.github.example.toolbox",
   "name": "Example Toolbox",
   "description": "示例工具插件。",
   "authors": ["Example Team"],
   "license": "MIT",
-  "repository_url": "https://github.com/example/nya-toolbox",
+  "repository_url": "https://github.com/example/unuse-toolbox",
   "maintainers": ["example"],
   "categories": ["utilities"],
   "releases": [
@@ -64,9 +67,9 @@ sha256sum plugin.zip
       "version": "1.2.0",
       "channel": "stable",
       "published_at": "2026-08-20T12:00:00Z",
-      "release_notes_url": "https://github.com/example/nya-toolbox/releases/tag/v1.2.0",
+      "release_notes_url": "https://github.com/example/unuse-toolbox/releases/tag/v1.2.0",
       "download": {
-        "url": "https://github.com/example/nya-toolbox/releases/download/v1.2.0/io.github.example.toolbox-1.2.0.zip",
+        "url": "https://github.com/example/unuse-toolbox/releases/download/v1.2.0/io.github.example.toolbox-1.2.0.zip",
         "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
         "size": 123456
       },
@@ -103,7 +106,7 @@ appearance automation gameplay integration launch management utilities
 io.github.<仓库 owner 小写>.<插件名>
 ```
 
-例如 `https://github.com/example/nya-toolbox` 使用 `io.github.example.toolbox`。这条规则防止公开
+例如 `https://github.com/example/unuse-toolbox` 使用 `io.github.example.toolbox`。这条规则防止公开
 Topic 仓库抢占别人的插件 ID；需要使用自有域名 ID 时，应先由管理员核验域名所有权。
 首次收录还会生成 UUID `lineageId`，并把 GitHub 的 `repositoryId` 与 `ownerId` 固定到
 `plugins/<id>/identity.json` 和 active 指针。仓库或账号改名、转移以及旧路径被重新占用都不会自动
@@ -119,7 +122,7 @@ canonical URL；已记录前缀不可删除、重排、插入或回滚。新清�
 变化，必须走管理员 transfer；不能伪装成改名。为防止不理解别名的旧客户端误判，history 多于一项
 的 generation 不进入严格 v1 索引，只出现在 v2。
 
-完成 Release 与 `_manifest.json` 后，给作者仓库添加 `nyalauncher-plugin` Topic。定时机器人会：
+完成 Release 与 `_manifest.json` 后，历史流程会通过约定的 discovery Topic 发现作者仓库。定时机器人会：
 
 1. 搜索公开、非 Fork、未归档仓库；
 2. 下载并静态校验 `_manifest.json`；
@@ -277,7 +280,7 @@ Issue/comment、原因和原 publisher 绑定。以后文本 ID 可以重新收�
 
 ### 7.4 组织仓库确认文件
 
-组织仓库在默认分支根目录提交 `_nyalauncher_lifecycle.json`。文件必须与事务字段完全相等，不能有
+组织仓库在默认分支根目录提交历史流程约定的生命周期确认文件。文件必须与事务字段完全相等，不能有
 额外字段。retire 示例：
 
 ```json
@@ -308,13 +311,13 @@ transfer 还要增加 `"targetRepositoryId": 987654321`。管理员应通过组�
 因此在补齐对应触发器前不要启用 Merge Queue。
 
 写入身份是只安装在本仓库的 GitHub App。工作流完成所有不可信输入处理和回归测试后，才用
-`NYA_REGISTRY_APP_CLIENT_ID` 与 `NYA_REGISTRY_APP_PRIVATE_KEY` 申请一小时短期 installation token，
+工作流通过 GitHub App Client ID 与 Private Key 申请一小时短期 installation token，
 向 `registry-bot/*` 分支推送并创建 PR。App 不得获得 `main` bypass；合并必须经过 base-owned policy、
 完整 validator 和 strict/up-to-date 规则。Issue 标签与评论继续使用权限受限的 `GITHUB_TOKEN`。
 另需用 ruleset 将 `registry-bot/**` 分支的创建和更新限制为该 App；policy 还会核对每次 PR 事件的
 sender，防止普通写权限协作者接管已有机器人 PR。
 
-不要配置长期 `NYA_REGISTRY_WRITER_TOKEN`，也不要给普通维护者或通用 Actions 身份直接推送权限。
+不要配置长期 writer token，也不要给普通维护者或通用 Actions 身份直接推送权限。
 完整部署步骤见 [docs/REGISTRY_BOT.md](docs/REGISTRY_BOT.md)。
 
 ## 运维提醒

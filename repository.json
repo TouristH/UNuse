@@ -1,8 +1,8 @@
 {
   "$schema": "./schemas/repository-v2.schema.json",
   "schemaVersion": 2,
-  "name": "NyaLauncher Plugins",
-  "sourceUrl": "https://github.com/TouristH/NyaLauncher-Plugins",
+  "name": "UNuse",
+  "sourceUrl": "https://github.com/TouristH/UNuse",
   "launcherUrl": "https://github.com/redstore-noob/NyaLauncher",
   "indexPath": "public/v1/index.json",
   "indexV2Path": "public/v2/index.json",

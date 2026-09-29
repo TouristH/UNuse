@@ -41,7 +41,7 @@ MANIFEST = {
 }
 
 PUBLISHER_MANIFEST = {
-    "$schema": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/publisher-manifest-v1.schema.json",
+    "$schema": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/publisher-manifest-v1.schema.json",
     "manifest_version": 1,
     "id": "dev.example.test",
     "name": "Test",
@@ -158,7 +158,7 @@ class RegistryFixture:
             {
                 "schemaVersion": 1,
                 "name": "Test registry",
-                "sourceUrl": "https://github.com/TouristH/NyaLauncher-Plugins",
+                "sourceUrl": "https://github.com/TouristH/UNuse",
                 "launcherUrl": "https://github.com/redstore-noob/NyaLauncher",
                 "indexPath": "public/v1/index.json",
                 "registryBotLogin": "nyalauncher-registry-bot[bot]",
@@ -2203,7 +2203,7 @@ class RegistryGenerationTests(unittest.TestCase):
         for path in schemas.glob("*.schema.json"):
             with self.subTest(path=path.name):
                 value = json.loads(path.read_text(encoding="utf-8"))
-                self.assertIn("TouristH/NyaLauncher-Plugins", value["$id"])
+                self.assertIn("TouristH/UNuse", value["$id"])
 
 
 if __name__ == "__main__":

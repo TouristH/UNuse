@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/plugin-details-v2.schema.json",
-  "title": "NyaLauncher generated identity-aware plugin details v2",
+  "$id": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/plugin-details-v2.schema.json",
+  "title": "UNuse generated identity-aware plugin details v2",
   "description": "Internal deterministic view with frozen metadata for every publisher generation; reviews are attached only to public indexes.",
   "type": "array",
   "maxItems": 2048,

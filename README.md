@@ -1,25 +1,24 @@
-# NyaLauncher 插件中心
+# UNuse（废弃在线仓库）
 
-[![Validate registry](https://github.com/TouristH/NyaLauncher-Plugins/actions/workflows/validate.yml/badge.svg)](https://github.com/TouristH/NyaLauncher-Plugins/actions/workflows/validate.yml)
-[![NyaLauncher](https://img.shields.io/badge/NyaLauncher-main-7c4dff)](https://github.com/redstore-noob/NyaLauncher)
+> [!CAUTION]
+> **废弃在线仓库：本项目已停止维护。** 不再接收新插件、审核或生命周期请求。下方内容仅作为
+> 历史设计与安全说明保留，请勿将索引、机器人或工作流视为仍受维护的在线服务。
 
-NyaLauncher 的独立社区插件索引。插件代码和安装包仍由作者自己的 GitHub 仓库托管，
+UNuse 是已停用的社区插件索引。插件代码和安装包仍由作者自己的 GitHub 仓库托管，
 本仓库只负责收录来源、保存不可变版本历史、验证发行包并生成启动器读取的静态索引。
 
-插件开发规范以
-[NyaLauncher Plugin Abstractions（API v1）](https://github.com/redstore-noob/NyaLauncher/blob/main/NyaLauncher.Plugin.Abstractions/README.md)
-为准。
+本项目不再提供或指向外部插件开发规范；下述 API v1 流程仅用于说明存量索引的历史合同。
 
 > 收录不等于代码安全审核。插件是与启动器同进程运行的 .NET 代码，能力授权不是操作系统沙箱。
 
-## 工作方式
+## 历史工作方式
 
-本仓库结合了 GitHub Topic 自动发现、Issue 兜底与固定 Release 包三种机制：
+本仓库停用前结合了 GitHub Topic 自动发现、Issue 兜底与固定 Release 包三种机制：
 
 1. `plugins.json` 登记插件 ID、作者仓库地址及 GitHub 不可复用的仓库/所有者数字 ID。
 2. 插件作者在自己仓库根目录维护 `_manifest.json`，以升序 `releases[]` 保留完整发行历史。
 3. 每个发行版必须是不可变的 GitHub Release ZIP，并声明精确 URL、字节数和 SHA-256。
-4. 收录机器人搜索 `nyalauncher-plugin` Topic，并自动下载 ZIP，检查包根 `plugin.json`、
+4. 收录机器人曾通过约定的 discovery Topic 搜索候选，并自动下载 ZIP，检查包根 `plugin.json`、
    入口 DLL、兼容性、能力声明和安全路径。
 5. 验证通过的新版本只会追加到该插件自己的历史目录，不会覆盖旧版本。
 6. 生成两个互不混用的静态合同：严格兼容旧启动器的 `public/v1/index.json`，以及携带
@@ -46,20 +45,18 @@ plugins/<plugin-id>/
 Release 链接可验证；旧项不可删除、重排或回滚，最后一项始终是当前地址。history 多于一项的代际
 只进入 v2，避免旧 v1 客户端把改名误判为另一个发布者。
 
-## 提交插件
+## 历史发布流程
 
-正常发布不需要 Fork 中心仓库，也不需要等待管理员批准：
+停用前的正常发布不需要 Fork 中心仓库，也不需要等待管理员批准：
 
 1. 在作者仓库创建固定 GitHub Release，上传 ZIP。
 2. 在作者仓库根目录添加 `_manifest.json`（示例见
    [`templates/_manifest.json`](templates/_manifest.json)）。
-3. 插件 ID 使用 `io.github.<仓库所有者小写>.<名称>`，并给仓库添加
-   `nyalauncher-plugin` Topic。
+3. 插件 ID 使用 `io.github.<仓库所有者小写>.<名称>`，并给仓库添加约定的 discovery Topic。
 4. 机器人自动发现、严格验证并通过机器人 PR 收录；收录时默认没有绿色审核标志。
 
-GitHub Topic 索引可能短暂延迟。需要立即进入队列时可创建
-[Plugin Queue Issue](../../issues/new?template=add-plugin.yml)；它仍由机器人自动处理，不需要
-管理员输入 `/validate` 或 `/approve`。
+停用前若 GitHub Topic 索引短暂延迟，可使用 Plugin Queue Issue 进入同一处理队列；当前仓库已不再
+接收或处理此类请求。
 
 首次收录后，作者发布新版本只需创建新的 Release，并把新项追加到 `_manifest.json` 的完整
 `releases[]`。同步任务会以有界批次将缺失版本追加到 `plugins/<id>/releases/`，不会因两次采样间
@@ -68,7 +65,7 @@ GitHub Topic 索引可能短暂延迟。需要立即进入队列时可创建
 
 完整要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-## 收录与审核是两件事
+## 历史收录与审核模型
 
 - **已收录（listed）**：版本通过格式、哈希、ZIP 与运行时清单验证，可以出现在仓库中；不代表管理员读过代码。
 - **管理员已审核（verified）**：可信审核者审查了精确的插件 ID、版本和 ZIP SHA-256，启动器显示绿色标志。
@@ -110,16 +107,16 @@ Lifecycle Issue、作者确认和管理员命令的逐步操作见
 [CONTRIBUTING.md](CONTRIBUTING.md#7-插件身份生命周期)；管理员部署与审核员添加流程见
 [docs/REGISTRY_BOT.md](docs/REGISTRY_BOT.md)。
 
-## 收录机器人
+## 历史收录机器人
 
-自动写入由仅安装在本仓库的 GitHub App 完成。工作流在所有不可信清单和 ZIP 验证结束后才申请
+停用前，自动写入由仅安装在本仓库的 GitHub App 完成。工作流在所有不可信清单和 ZIP 验证结束后才申请
 一小时短期安装令牌，创建同仓机器人 PR，并交由 `policy` 与 `validate` 两项检查后自动合并；
 机器人没有绕过 `main` 规则的权限。部署步骤见 [机器人配置文档](docs/REGISTRY_BOT.md)。
 
-启用机器人前，仓库管理员必须完成以下远端配置：
+历史部署需要完成以下远端配置：
 
 1. 创建 GitHub App，并且只安装到本插件中心仓库；
-2. 配置 `NYA_REGISTRY_APP_CLIENT_ID` 变量和 `NYA_REGISTRY_APP_PRIVATE_KEY` Secret；
+2. 配置 GitHub App Client ID 变量和 Private Key Secret；
 3. 开启仓库 Auto-merge；
 4. 保护 `main`，将 `policy` 与 `validate` 设为必须且要求分支保持最新；
 5. 限制 `registry-bot/**` 只能由该 GitHub App 创建和更新。
@@ -128,17 +125,17 @@ Lifecycle Issue、作者确认和管理员命令的逐步操作见
 不要配置长期个人 PAT，也不要给予机器人直接推送 `main` 的 bypass。缺少任一项时，工作流会
 安全失败，不会退化为跳过验证直接写入。
 
-## 公开文件
+## 存档文件
 
 - [`plugins.json`](plugins.json)：受监控作者仓库及其 GitHub numeric identity 列表。
 - [`plugin_details.json`](plugin_details.json)：从完整历史目录生成的展示数据。
 - [`public/v1/index.json`](public/v1/index.json)：严格旧合同；不包含任何身份新字段、g2 或隐藏插件。
 - [`public/v2/index.json`](public/v2/index.json)：身份感知合同；保留完整代际、撤回历史与隐藏状态。
 
-启动器固定索引地址：
+存档索引地址（不再更新）：
 
 ```text
-https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/public/v2/index.json
+https://raw.githubusercontent.com/TouristH/UNuse/main/public/v2/index.json
 ```
 
 仅支持旧合同的启动器可继续读取 `public/v1/index.json`。身份感知启动器只可在 v2 URL 明确返回

@@ -1,8 +1,13 @@
 name: Plugin lifecycle / 插件身份生命周期
-description: 原作者确认后退役或定向转让 ID；purge 仅处理从未公开的误收录
+description: UNuse 已停止维护；此表单仅保留历史生命周期流程
 title: "[Lifecycle] "
 labels: ["plugin-lifecycle", "pending-review"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        > **废弃在线仓库：UNuse 已停止维护。** 本表单不会再处理新的生命周期请求，
+        > 下列字段仅用于保留原有身份与供应链安全边界。
   - type: dropdown
     id: operation
     attributes:
@@ -67,7 +72,7 @@ body:
         - retire：`/confirm-retire id@gN source:SOURCE_REPOSITORY_ID`
         - transfer：`/confirm-transfer id@gN source:SOURCE_REPOSITORY_ID target:TARGET_REPOSITORY_ID`
 
-        组织仓库改为在源仓库默认分支根目录提交 `_nyalauncher_lifecycle.json` 固定确认文件。
+        组织仓库改为在源仓库默认分支根目录提交历史流程约定的固定确认文件。
         管理员随后使用包含 expected generation 和数字仓库 ID 的 `/apply-lifecycle ...` 命令。
         purge 还必须绑定未合并的单插件机器人 PR：
         `/apply-lifecycle purge id@gN source:SOURCE_REPOSITORY_ID staging-pr:PR_NUMBER`。

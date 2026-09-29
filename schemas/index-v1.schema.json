@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/index-v1.schema.json",
-  "title": "NyaLauncher generated plugin index v1",
+  "$id": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/index-v1.schema.json",
+  "title": "UNuse generated plugin index v1",
   "type": "object",
   "additionalProperties": false,
   "required": ["schemaVersion", "name", "sourceUrl", "plugins"],
