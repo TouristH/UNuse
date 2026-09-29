@@ -5,9 +5,9 @@
   "version": "1.0.0",
   "channel": "stable",
   "publishedAt": "2026-08-13T00:00:00Z",
-  "releaseNotesUrl": "https://github.com/example/nya-toolbox/releases/tag/v1.0.0",
+  "releaseNotesUrl": "https://github.com/example/unuse-toolbox/releases/tag/v1.0.0",
   "download": {
-    "url": "https://github.com/example/nya-toolbox/releases/download/v1.0.0/io.github.example.toolbox-1.0.0.zip",
+    "url": "https://github.com/example/unuse-toolbox/releases/download/v1.0.0/io.github.example.toolbox-1.0.0.zip",
     "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
     "size": 123456
   },

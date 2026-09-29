@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/repository-v2.schema.json",
-  "title": "NyaLauncher plugin repository configuration v2",
+  "$id": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/repository-v2.schema.json",
+  "title": "UNuse plugin repository configuration v2",
   "type": "object",
   "additionalProperties": false,
   "required": [

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate, refresh, and deterministically publish the NyaLauncher registry.
+"""Validate, refresh, and deterministically publish the UNuse registry.
 
 ``plugins.json`` contains monitored publisher pointers and immutable GitHub
 numeric identities. Each publisher owns
@@ -661,7 +661,7 @@ def fetch_github_repository_identity(
         f"{quote(owner, safe='')}/{quote(repository, safe='')}",
         headers={
             "Accept": "application/vnd.github+json",
-            "User-Agent": "NyaLauncher-Plugins-Validator/2.0",
+            "User-Agent": "UNuse-Validator/2.0",
             "X-GitHub-Api-Version": "2022-11-28",
         },
     )
@@ -1219,7 +1219,7 @@ def fetch_repository_manifest(repository_url: str, source: str) -> dict:
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "NyaLauncher-Plugins-Validator/2.0",
+            "User-Agent": "UNuse-Validator/2.0",
             "Accept": "application/json",
         },
     )
@@ -3407,7 +3407,7 @@ def download_release_asset(plugin: dict, release: dict) -> bytes:
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "NyaLauncher-Plugins-Validator/2.0",
+            "User-Agent": "UNuse-Validator/2.0",
             "Accept": "application/octet-stream",
         },
     )

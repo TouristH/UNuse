@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Discover and technically list NyaLauncher plugins without reviewing them.
+"""Discover and technically list UNuse plugins without reviewing them.
 
 Discovery has two inputs, in priority order:
 
 * open ``plugin-submission`` Issues in this registry (the fallback path), and
 * public, non-fork, non-archived GitHub repositories carrying the fixed
-  ``nyalauncher-plugin`` topic.
+  legacy discovery topic.
 
 Successful candidates are passed to one ``validate.refresh_details`` call
 together with all active publishers.  This deliberately shares the existing
@@ -100,7 +100,7 @@ def github_get(path: str) -> object:
         raise RegistryBotFailure("GitHub API 路径无效")
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "NyaLauncher-Registry-Bot/1.0",
+        "User-Agent": "UNuse-Registry-Bot/1.0",
         "X-GitHub-Api-Version": "2022-11-28",
     }
     token = os.environ.get("GITHUB_TOKEN", "").strip()

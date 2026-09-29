@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "name": "NyaLauncher Plugins",
-  "sourceUrl": "https://github.com/TouristH/NyaLauncher-Plugins",
+  "name": "UNuse",
+  "sourceUrl": "https://github.com/TouristH/UNuse",
   "plugins": [
     {
       "id": "io.github.touristh.example-clock",

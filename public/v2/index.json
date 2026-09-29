@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "name": "NyaLauncher Plugins",
-  "sourceUrl": "https://github.com/TouristH/NyaLauncher-Plugins",
+  "name": "UNuse",
+  "sourceUrl": "https://github.com/TouristH/UNuse",
   "minimumLauncherVersion": "1.0.0-preview1",
   "plugins": [
     {

@@ -1,8 +1,13 @@
 name: Request Review / 请求管理员审核
-description: 请求对某个固定版本进行人工审核；不会自动获得绿色标志
+description: UNuse 已停止维护；此表单仅保留历史审核流程
 title: "[Review] "
 labels: ["review-request"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        > **废弃在线仓库：UNuse 已停止维护。** 本表单不会再处理新的审核请求，
+        > 下列字段仅用于保留原有固定版本与哈希审核边界。
   - type: input
     id: plugin-id
     attributes:

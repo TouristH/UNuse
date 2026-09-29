@@ -301,7 +301,7 @@ def fetch_issue_comments_since(event: dict, since: str) -> list[dict]:
         )
         headers = {
             "Accept": "application/vnd.github+json",
-            "User-Agent": "NyaLauncher-Registry-Review/1.0",
+            "User-Agent": "UNuse-Registry-Review/1.0",
             "X-GitHub-Api-Version": "2022-11-28",
         }
         if token:

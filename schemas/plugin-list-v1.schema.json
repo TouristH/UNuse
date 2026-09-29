@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/plugin-list-v1.schema.json",
-  "title": "NyaLauncher active publisher repository list v1",
+  "$id": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/plugin-list-v1.schema.json",
+  "title": "UNuse active publisher repository list v1",
   "description": "The bounded list of monitored plugin publishers, bound to immutable GitHub numeric identities.",
   "type": "array",
   "maxItems": 2048,

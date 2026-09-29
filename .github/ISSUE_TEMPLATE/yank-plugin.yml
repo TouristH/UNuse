@@ -1,8 +1,13 @@
 name: Yank Release / 撤回版本
-description: 请求撤回一个或多个已收录版本，同时保留历史记录
+description: UNuse 已停止维护；此表单仅保留历史撤回流程
 title: "[Yank] "
 labels: ["plugin-yank", "pending-review"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        > **废弃在线仓库：UNuse 已停止维护。** 本表单不会再处理新的撤回请求，
+        > 下列字段仅用于保留原有历史记录与安全说明。
   - type: input
     id: plugin-id
     attributes:

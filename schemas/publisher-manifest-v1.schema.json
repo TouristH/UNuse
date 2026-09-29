@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/TouristH/NyaLauncher-Plugins/main/schemas/publisher-manifest-v1.schema.json",
-  "title": "NyaLauncher publisher _manifest.json v1",
+  "$id": "https://raw.githubusercontent.com/TouristH/UNuse/main/schemas/publisher-manifest-v1.schema.json",
+  "title": "UNuse publisher _manifest.json v1",
   "description": "Stable plugin metadata plus the bounded complete history of immutable GitHub Release ZIPs.",
   "type": "object",
   "additionalProperties": false,

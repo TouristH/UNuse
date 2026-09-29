@@ -633,7 +633,7 @@ def github_api(event: dict, method: str, path: str, body: object | None = None) 
         headers={
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {token}",
-            "User-Agent": "NyaLauncher-Registry-Issue-Workflow/1.0",
+            "User-Agent": "UNuse-Registry-Issue-Workflow/1.0",
             "X-GitHub-Api-Version": "2022-11-28",
             "Content-Type": "application/json",
         },

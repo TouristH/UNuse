@@ -1,12 +1,15 @@
 name: Queue Plugin / 插件收录兜底
-description: Topic 自动发现延迟时，将公开作者仓库加入机器人收录队列
+description: UNuse 已停止维护；此表单仅保留历史收录流程
 title: "[Plugin] "
 labels: ["plugin-submission", "queued-for-intake"]
 body:
   - type: markdown
     attributes:
       value: |
-        通常只需给作者仓库添加 `nyalauncher-plugin` Topic，机器人就会自动发现并收录。
+        > **废弃在线仓库：UNuse 已停止维护。** 本表单不会再处理新的插件收录请求，
+        > 下列内容仅用于保留原有安全要求和历史流程。
+
+        历史流程通过约定的 discovery Topic 自动发现作者仓库。
         如果 GitHub Topic 索引尚未更新，可提交此 Issue 进入同一收录队列；不需要等待管理员
         输入 `/validate` 或 `/approve`。机器人会校验固定 Release ZIP、SHA-256、包内
         `plugin.json` 和入口 DLL，成功后以“未审核”状态加入中心。
@@ -23,7 +26,7 @@ body:
     attributes:
       label: 仓库地址 / Repository URL
       description: 公开 GitHub 仓库根地址，不要填写 .git、分支或文件 URL。
-      placeholder: https://github.com/example/nya-toolbox
+      placeholder: https://github.com/example/unuse-toolbox
     validations:
       required: true
   - type: checkboxes

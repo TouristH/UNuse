@@ -1,4 +1,8 @@
-# NyaLauncher 收录机器人：从零配置与排错
+# UNuse 收录机器人：历史配置与排错
+
+> [!CAUTION]
+> **废弃在线仓库：UNuse 已停止维护。** 本文仅保留原有自动化、安全隔离和故障排查说明，
+> 不代表机器人、定时任务或人工审核仍在运行。
 
 本仓库把“自动收录”和“人工审核”拆开：定时工作流验证作者仓库与固定 Release ZIP，GitHub App
 只负责把验证结果写成 PR；管理员审核仍由 `trustedReviewerIds` 中的人手工执行。App 没有 `main`
@@ -47,8 +51,8 @@ schema1 阶段运行 `--write/--check` 只维护旧 `plugin_details.json + publi
 
 在 GitHub 头像菜单进入 **Settings → Developer settings → GitHub Apps → New GitHub App**。
 
-- GitHub App name：例如 `NyaLauncher Registry Bot`（名称必须全站唯一）。
-- Homepage URL：`https://github.com/TouristH/NyaLauncher-Plugins`。
+- GitHub App name：例如 `UNuse Registry Bot`（名称必须全站唯一）。
+- Homepage URL：`https://github.com/TouristH/UNuse`。
 - Webhook：取消 **Active**；本项目完全由 Actions 调度。
 - Repository permissions：
   - Contents: **Read and write**
@@ -66,15 +70,15 @@ Issue、PR、日志或仓库文件。
 ## 2. 只安装到插件中心仓库
 
 在 App 页面选择 **Install App**，对 `TouristH` 账号选择 **Only select repositories**，只勾选
-`NyaLauncher-Plugins`。不要安装到作者插件仓库或启动器仓库；自动发现读取的是公开 API，不需要 App
+`UNuse`。不要安装到作者插件仓库或启动器仓库；自动发现读取的是公开 API，不需要 App
 访问作者仓库。
 
 安装完成后，在插件中心仓库打开 **Settings → Secrets and variables → Actions**：
 
-1. Variables 页新增 `NYA_REGISTRY_APP_CLIENT_ID`，值为 Client ID。
-2. Secrets 页新增 `NYA_REGISTRY_APP_PRIVATE_KEY`，值为完整 PEM（包含 BEGIN/END 行）。
+1. Variables 页新增工作流约定的 Client ID 变量。
+2. Secrets 页新增工作流约定的 Private Key Secret，值为完整 PEM（包含 BEGIN/END 行）。
 
-不要创建 `NYA_REGISTRY_WRITER_TOKEN` 或长期个人 PAT。工作流使用官方 Action为当前仓库签发短期
+不要创建长期 writer token 或个人 PAT。工作流使用官方 Action 为当前仓库签发短期
 installation token，job 结束后撤销。
 
 ## 3. 添加或移除人工审核员
@@ -185,7 +189,7 @@ auto-merge 抢先落入 main；后续 lifecycle job 才获取写锁。分支会�
 
 ## 8. 验证自动收录
 
-1. 在测试插件仓库准备合规 `_manifest.json`、固定 Release ZIP 和 `nyalauncher-plugin` Topic。
+1. 在测试插件仓库准备合规 `_manifest.json`、固定 Release ZIP 和历史流程约定的 discovery Topic。
 2. 插件中心 **Actions → Refresh publisher manifests → Run workflow**。
 3. 确认出现 `registry-bot/sync` 同仓 PR。
 4. 确认 PR 作者与 event sender 都是配置的 `<slug>[bot]`。
